@@ -1,7 +1,40 @@
-import { exitFileManager } from "./exitManager"
+import {
+  COMMANDS,
+  COMMAND_SEPARATOR,
+  ERROR_MESSAGES,
+} from "../constants/constants.js"
+import { currentDirectory } from "../index.js"
+import { changeDirectory } from "./changeDirectory.js"
+import { exitFileManager } from "./exitManager.js"
+
+const printWorkingDirectory = () => {
+  console.log(`You are currently in ${currentDirectory.path}`)
+}
 
 export const startFileManager = (username) => {
-  console.log("Welcome to the File Manager, " + username + "!")
+  console.log(`Welcome to the File Manager, ${username}!`)
+  printWorkingDirectory()
 
-  process.stdin.on("data", (input) => {})
+  process.stdin.on("data", async (input) => {
+    const fullCommand = input.toString().trim().toLowerCase()
+    const commandName = fullCommand.split(COMMAND_SEPARATOR)[0]
+
+    switch (commandName) {
+      case COMMANDS.UP:
+        goUp()
+        break
+      case COMMANDS.CD:
+        const directory = fullCommand.substring(COMMANDS.CD.length).trim()
+        await changeDirectory(directory)
+        break
+      case COMMANDS.EXIT:
+        exitFileManager(username)
+        break
+      default:
+        console.log(ERROR_MESSAGES.INVALID_COMMAND)
+        break
+    }
+
+    printWorkingDirectory()
+  })
 }
