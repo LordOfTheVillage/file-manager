@@ -1,11 +1,8 @@
-import {
-  COMMANDS,
-  COMMAND_SEPARATOR,
-  ERROR_MESSAGES,
-} from "../constants/constants.js"
+import { COMMANDS, ERROR_MESSAGES, SYMBOLS } from "../constants/constants.js"
 import { currentDirectory } from "../index.js"
 import { changeDirectory } from "./changeDirectory.js"
 import { exitFileManager } from "./exitManager.js"
+import { goUp } from "./goUp.js"
 
 const printWorkingDirectory = () => {
   console.log(`You are currently in ${currentDirectory.path}`)
@@ -17,7 +14,7 @@ export const startFileManager = (username) => {
 
   process.stdin.on("data", async (input) => {
     const fullCommand = input.toString().trim().toLowerCase()
-    const commandName = fullCommand.split(COMMAND_SEPARATOR)[0]
+    const commandName = fullCommand.split(SYMBOLS.COMMAND_SEPARATOR)[0]
 
     switch (commandName) {
       case COMMANDS.UP:

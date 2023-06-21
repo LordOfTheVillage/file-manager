@@ -1,5 +1,8 @@
 export const USERNAME_ARG = "--username="
-export const COMMAND_SEPARATOR = " "
+export const SYMBOLS = {
+  UPPER_DIR: "..",
+  COMMAND_SEPARATOR: " ",
+}
 export const COMMANDS = {
   UP: "up",
   CD: "cd",
