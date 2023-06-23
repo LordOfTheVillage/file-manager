@@ -5,6 +5,7 @@ import { exitFileManager } from "./exitManager.js"
 import { goUp } from "./navigation/goUp.js"
 import { listFiles } from "./navigation/listFiles.js"
 import { catFile } from "./files/catFile.js"
+import { createEmptyFile } from "./files/createEmptyFile.js"
 
 const printWorkingDirectory = () => {
   console.log(`You are currently in ${currentDirectory.path}`)
@@ -23,8 +24,10 @@ export const startFileManager = (username) => {
         goUp()
         break
       case COMMANDS.CD:
-        const directory = fullCommand.substring(COMMANDS.CD.length).trim()
-        await changeDirectory(directory)
+        const cdDirectoryArgument = fullCommand
+          .substring(COMMANDS.CD.length)
+          .trim()
+        await changeDirectory(cdDirectoryArgument)
         break
       case COMMANDS.EXIT:
         exitFileManager(username)
@@ -33,8 +36,16 @@ export const startFileManager = (username) => {
         await listFiles()
         break
       case COMMANDS.CAT:
-        const file = fullCommand.substring(COMMANDS.CAT.length).trim()
-        catFile(file)
+        const catFileArgument = fullCommand
+          .substring(COMMANDS.CAT.length)
+          .trim()
+        catFile(catFileArgument)
+        break
+      case COMMANDS.ADD:
+        const addFileArgument = fullCommand
+          .substring(COMMANDS.ADD.length)
+          .trim()
+        await createEmptyFile(addFileArgument)
         break
       default:
         console.log(ERROR_MESSAGES.INVALID_COMMAND)

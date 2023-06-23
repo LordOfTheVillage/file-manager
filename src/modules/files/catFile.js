@@ -13,8 +13,4 @@ export const catFile = (file) => {
   stream.on("error", (error) => {
     console.log(ERROR_MESSAGES.FAILED_READING_FILE)
   })
-
-  stream.on("end", () => {
-    console.log("\n")
-  })
 }
