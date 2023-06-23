@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
-import { currentDirectory } from "../index.js"
-import { ERROR_MESSAGES } from "../constants/constants.js"
+import { currentDirectory } from "../../index.js"
+import { ERROR_MESSAGES } from "../../utils/constants.js"
 
 export const listFiles = async () => {
   try {

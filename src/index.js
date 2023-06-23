@@ -1,4 +1,4 @@
-import { ARGUMENTS, ERROR_MESSAGES } from "./constants/constants.js"
+import { ARGUMENTS, ERROR_MESSAGES } from "./utils/constants.js"
 import { Directory } from "./models/directory.js"
 import { startFileManager } from "./modules/startManager.js"
 import os from "os"
