@@ -83,4 +83,8 @@ export const startFileManager = (username) => {
 
     printWorkingDirectory()
   })
+
+  process.on("SIGINT", () => {
+    exitFileManager(username)
+  })
 }
