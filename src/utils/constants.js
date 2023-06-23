@@ -26,4 +26,5 @@ export const ERROR_MESSAGES = {
   FAILED_RETRIEVE_CONTENT: "Failed to retrieve directory content:",
   FAILED_READING_FILE: "File does not exist or cannot be read.",
   FAILED_CREATE_FILE: "File could not be created.",
+  FAILED_RENAME_FILE: "File could not be renamed.",
 }
