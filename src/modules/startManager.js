@@ -7,6 +7,7 @@ import { listFiles } from "./navigation/listFiles.js"
 import { catFile } from "./files/catFile.js"
 import { createEmptyFile } from "./files/createEmptyFile.js"
 import { renameFile } from "./files/renameFile.js"
+import { copyFile } from './files/copyFile.js'
 
 const printWorkingDirectory = () => {
   console.log(`You are currently in ${currentDirectory.path}`)
@@ -50,10 +51,17 @@ export const startFileManager = (username) => {
         break
       case COMMANDS.RN:
         const rnFileArguments = fullCommand
-          .substring(COMMANDS.ADD.length)
+          .substring(COMMANDS.RN.length)
           .trim()
           .split(SYMBOLS.COMMAND_SEPARATOR)
         await renameFile(...rnFileArguments)
+        break
+      case COMMANDS.CP:
+        const cpFileArguments = fullCommand
+          .substring(COMMANDS.CP.length)
+          .trim()
+          .split(SYMBOLS.COMMAND_SEPARATOR)
+        copyFile(...cpFileArguments)
         break
       default:
         console.log(ERROR_MESSAGES.INVALID_COMMAND)
