@@ -41,4 +41,6 @@ export const ERROR_MESSAGES = {
   FAILED_FIND_TARGET_DIR:
     "Target directory does not exist or cannot be written to.",
   FAILED_CALCULATE_HASH: "Unable to calculate file hash.",
+  FAILED_COMPRESS_FILE: "Unable to compress the file.",
+  FAILED_DECOMPRESS_FILE: "Unable to decompress the file.",
 }

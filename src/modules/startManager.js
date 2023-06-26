@@ -12,6 +12,8 @@ import { moveFile } from "./files/moveFile.js"
 import { deleteFile } from "./files/deleteFile.js"
 import { operatingSystem } from "./os/operatingSystem.js"
 import { hashFile } from "./hash/hashFile.js"
+import { compressFile } from "./archive/compressFile.js"
+import { decompressFile } from './archive/decompressFile.js'
 
 const printWorkingDirectory = () => {
   console.log(`You are currently in ${currentDirectory.path}`)
@@ -87,6 +89,20 @@ export const startFileManager = (username) => {
           .substring(COMMANDS.HASH.length)
           .trim()
         hashFile(hashFileArgument)
+        break
+      case COMMANDS.COMPRESS:
+        const compressFileArguments = fullCommand
+          .substring(COMMANDS.COMPRESS.length)
+          .trim()
+          .split(SYMBOLS.COMMAND_SEPARATOR)
+        compressFile(...compressFileArguments)
+        break
+      case COMMANDS.DECOMPRESS:
+        const decompressFileArguments = fullCommand
+          .substring(COMMANDS.DECOMPRESS.length)
+          .trim()
+          .split(SYMBOLS.COMMAND_SEPARATOR)
+        decompressFile(...decompressFileArguments)
         break
       default:
         console.log(ERROR_MESSAGES.INVALID_COMMAND)
