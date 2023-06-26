@@ -10,7 +10,8 @@ import { renameFile } from "./files/renameFile.js"
 import { copyFile } from "./files/copyFile.js"
 import { moveFile } from "./files/moveFile.js"
 import { deleteFile } from "./files/deleteFile.js"
-import { operatingSystem } from './os/operatingSystem.js'
+import { operatingSystem } from "./os/operatingSystem.js"
+import { hashFile } from "./hash/hashFile.js"
 
 const printWorkingDirectory = () => {
   console.log(`You are currently in ${currentDirectory.path}`)
@@ -80,6 +81,12 @@ export const startFileManager = (username) => {
       case COMMANDS.OS:
         const osFileArgument = fullCommand.substring(COMMANDS.OS.length).trim()
         operatingSystem(osFileArgument)
+        break
+      case COMMANDS.HASH:
+        const hashFileArgument = fullCommand
+          .substring(COMMANDS.HASH.length)
+          .trim()
+        hashFile(hashFileArgument)
         break
       default:
         console.log(ERROR_MESSAGES.INVALID_COMMAND)
