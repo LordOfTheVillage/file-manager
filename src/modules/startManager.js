@@ -10,6 +10,7 @@ import { renameFile } from "./files/renameFile.js"
 import { copyFile } from "./files/copyFile.js"
 import { moveFile } from "./files/moveFile.js"
 import { deleteFile } from "./files/deleteFile.js"
+import { operatingSystem } from './os/operatingSystem.js'
 
 const printWorkingDirectory = () => {
   console.log(`You are currently in ${currentDirectory.path}`)
@@ -75,6 +76,10 @@ export const startFileManager = (username) => {
       case COMMANDS.RM:
         const rmFileArgument = fullCommand.substring(COMMANDS.RM.length).trim()
         deleteFile(rmFileArgument)
+        break
+      case COMMANDS.OS:
+        const osFileArgument = fullCommand.substring(COMMANDS.OS.length).trim()
+        operatingSystem(osFileArgument)
         break
       default:
         console.log(ERROR_MESSAGES.INVALID_COMMAND)

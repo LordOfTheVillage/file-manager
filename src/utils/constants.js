@@ -19,6 +19,15 @@ export const COMMANDS = {
   DECOMPRESS: "decompress",
   EXIT: ".exit",
 }
+
+export const OS_FLAGS = {
+  EOL: "--eol",
+  CPUS: "--cpus",
+  HOMEDIR: "--homedir",
+  USERNAME: "--username",
+  ARCH: "--architecture",
+}
+
 export const ERROR_MESSAGES = {
   INVALID_COMMAND: "Invalid command.",
   INVALID_USERNAME: "Invalid input. Please provide --username argument.",
